@@ -12,7 +12,9 @@ public class MyWorld extends World {
         Honey honey = new Honey();
         addObject(honey, 300, 0);
         
-        //creates a lable
+        //creates a label
+        Label scoreLabel = new Label(0, 80);
+        addObject(scoreLabel,50, 50);
     }
     
     

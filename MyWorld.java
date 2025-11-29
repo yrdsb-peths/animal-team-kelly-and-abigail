@@ -4,11 +4,11 @@ public class MyWorld extends World {
     public int score = 0;
     Label scoreLabel;
     public MyWorld() {
-        super(600, 400, 1);
+        super(600, 400, 1, false);
         
         //creates pooh object
         WinnieThePooh pooh = new WinnieThePooh();
-        addObject(pooh, 300, 200);
+        addObject(pooh, 300, 300);
         
         //creates honey object
         Honey honey = new Honey();
@@ -19,12 +19,30 @@ public class MyWorld extends World {
         addObject(scoreLabel,50, 50);
     }
     
+    /**
+     * End the game and draw 'GameOver'
+     */
+    
+    public void gameOver()
+    {
+        Label gameOverLabel = new Label("Gameover", 100);
+        addObject(gameOverLabel, 300, 200);
+    
+    }
+    
+    
+    /**
+     * Increases score
+     */
     public void increaseScore()
     {
         score++;
         scoreLabel.setValue(score);
     }
     
+    /**
+     * Spawns each honey
+     */
     public void spawnHoney()
     {
         int x = Greenfoot.getRandomNumber(600);

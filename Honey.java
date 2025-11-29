@@ -8,12 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Honey extends Actor
 {
-    /**
-     * Act - do whatever the Honey wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
-        setLocation(getX(), getY() + 1);
+        // Apple falls downwars
+        setLocation(getX(), getY() + 2);
+        
+        // Remove apple and draw game over when  apple get to the bottom
+        MyWorld world = (MyWorld) getWorld();
+        
+        if(getY() >= world.getHeight())
+        {
+            world.gameOver();
+            world.removeObject(this);
+        }
     }
 }

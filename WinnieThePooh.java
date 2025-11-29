@@ -37,6 +37,7 @@ public class WinnieThePooh extends Actor
             removeTouching(Honey.class);
             MyWorld world = (MyWorld) getWorld();
             world.spawnHoney();
+            world.increaseScore();
         }
     }
     

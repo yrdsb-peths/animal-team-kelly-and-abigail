@@ -9,19 +9,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class WinnieThePooh extends Actor
 {
     GreenfootSound winnieSound = new GreenfootSound("_audio_winnie_.mp3");
-    GreenfootImage[] idle = new GreenfootImage[8];
+    GreenfootImage[] idleRight = new GreenfootImage[8];
+    GreenfootImage[] idleLeft = new GreenfootImage[8];
+    
+    // Direction the winnie is facing
+    String facing = "right";
     
     /**
      * Constructor - The code that gets run one time when object is created
      */
     
     public WinnieThePooh() {
-        for(int i = 0; i < idle.length; i++) {
-            idle[i] = new GreenfootImage("images/winnie_idle/idle" + i + ".png");
-            idle[i].scale(50, 80);
+        for(int i = 0; i < idleRight.length; i++) {
+            idleRight[i] = new GreenfootImage("images/winnie_idle/idle" + i + ".png");
+            idleRight[i].scale(50, 80);
         }
         
-        setImage(idle[0]);
+        for(int i = 0; i < idleLeft.length; i++) {
+            idleLeft[i] = new GreenfootImage("images/winnie_idle/idle" + i + ".png");
+            idleLeft[i].mirrorHorizontally();
+            idleLeft[i].scale(50, 80);
+        }
+        
+        // Initial Winnie image
+        setImage(idleRight[0]);
     }
     
     /**
@@ -30,8 +41,14 @@ public class WinnieThePooh extends Actor
     
     int imageIndex = 0;
     public void animateWinnie() {
-        setImage(idle[imageIndex]);
-        imageIndex = (imageIndex + 5) % idle.length;
+        if(facing.equals("right")) {
+            setImage(idleRight[imageIndex]);
+            imageIndex = (imageIndex + 5) % idleRight.length;
+        } else {
+            setImage(idleLeft[imageIndex]);
+            imageIndex = (imageIndex + 5) % idleLeft.length;
+        }
+        
     }
     
     public void act()
@@ -39,10 +56,12 @@ public class WinnieThePooh extends Actor
         if(Greenfoot.isKeyDown("left"))
         {
             move(-3);
+            facing = "left";
         }
         else if(Greenfoot.isKeyDown("right"))
         {
             move(3);
+            facing = "right";
         }
         
         // Eat the hunny

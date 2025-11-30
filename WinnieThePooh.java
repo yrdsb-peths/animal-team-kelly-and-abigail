@@ -14,6 +14,7 @@ public class WinnieThePooh extends Actor
     
     // Direction the winnie is facing
     String facing = "right";
+    SimpleTimer animationTimer = new SimpleTimer();
     
     /**
      * Constructor - The code that gets run one time when object is created
@@ -31,6 +32,8 @@ public class WinnieThePooh extends Actor
             idleLeft[i].scale(50, 80);
         }
         
+        animationTimer.mark();
+        
         // Initial Winnie image
         setImage(idleRight[0]);
     }
@@ -41,6 +44,12 @@ public class WinnieThePooh extends Actor
     
     int imageIndex = 0;
     public void animateWinnie() {
+        if(animationTimer.millisElapsed() < 100) {
+            return;
+        }
+        
+        animationTimer.mark();
+        
         if(facing.equals("right")) {
             setImage(idleRight[imageIndex]);
             imageIndex = (imageIndex + 5) % idleRight.length;

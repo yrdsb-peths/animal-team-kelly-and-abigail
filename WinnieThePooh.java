@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WinnieThePooh extends Actor
 {
+    GreenfootSound winnieSound = new GreenfootSound("audio_winnie.mp3");
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
@@ -34,6 +35,7 @@ public class WinnieThePooh extends Actor
             MyWorld world = (MyWorld) getWorld();
             world.spawnHoney();
             world.increaseScore();
+            winnieSound.play();
         }
     }
 }

@@ -9,6 +9,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class WinnieThePooh extends Actor
 {
     GreenfootSound winnieSound = new GreenfootSound("audio_winnie.mp3");
+    GreenfootImage[] idle = new GreenfootImage[8];
+    
+    /**
+     * Constructor - The code that gets run one time when object is created
+     */
+    
+    public WinnieThePooh() {
+        for(int i = 0; i < idle.length; i++) {
+            idle[i] = new GreenfootImage("images/winnie_idle/idle" + i + ".png");
+        }
+        
+        setImage(idle[0]);
+    }
+    
+    /**
+     * Animate Winnie
+     */
+    
+    int imageIndex = 0;
+    public void animateWinnie() {
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
+    }
+    
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
@@ -20,7 +44,11 @@ public class WinnieThePooh extends Actor
             move(3);
         }
         
+        // Eat the hunny
         eat();
+        
+        // Animate the winnie
+        animateWinnie();
     }
     
     /**

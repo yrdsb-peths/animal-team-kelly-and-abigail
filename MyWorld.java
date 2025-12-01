@@ -11,8 +11,8 @@ public class MyWorld extends World {
         addObject(pooh, 300, 300);
         
         //creates honey object
-        Honey honey = new Honey();
-        addObject(honey, 300, 0);
+        Fries fries = new Fries();
+        addObject(fries, 300, 0);
         
         //creates a label
         scoreLabel = new Label(0, 80);
@@ -41,14 +41,14 @@ public class MyWorld extends World {
     }
     
     /**
-     * Spawns each honey
+     * Spawns each fries
      */
-    public void spawnHoney()
+    public void spawnFries()
     {
         int x = Greenfoot.getRandomNumber(600);
         
-        Honey honey = new Honey();
-        addObject(honey, x, 0);
+        Fries fries = new Fries();
+        addObject(fries, x, 0);
     
     }
 }

@@ -73,7 +73,7 @@ public class WinnieThePooh extends Actor
             facing = "right";
         }
         
-        // Eat the hunny
+        // Eat the fries
         eat();
         
         // Animate the winnie
@@ -85,12 +85,12 @@ public class WinnieThePooh extends Actor
      */
     public void eat()
     {
-        //Remove apple if pooh eats it
-        if(isTouching(Honey.class))
+        //Remove fries  if pooh eats it
+        if(isTouching(Fries.class))
         {
-            removeTouching(Honey.class);
+            removeTouching(Fries.class);
             MyWorld world = (MyWorld) getWorld();
-            world.spawnHoney();
+            world.spawnFries();
             world.increaseScore();
             winnieSound.play();
         }
